@@ -82,7 +82,10 @@ public class AddressBookMain
         Scanner sc=new Scanner(System.in);
         AddressBookMain addressBook=new AddressBookMain();
 
-        for(int i=0;i<2;i++)
+        System.out.println("Enter number of contacts to be added:");
+        int n=sc.nextInt();
+
+        for(int i=0;i<n;i++)
         {
             addressBook.addContacts();
         }
@@ -102,11 +105,11 @@ public class AddressBookMain
 
         addressBook.displayContacts();
         */
-        System.out.println("Enter existing name to be deleted:");
+        /*System.out.println("Enter existing name to be deleted:");
         String deleteName=sc.next();
 
         addressBook.deleteName(deleteName);
 
-        addressBook.displayContacts();
+        addressBook.displayContacts();*/
     }
 }
