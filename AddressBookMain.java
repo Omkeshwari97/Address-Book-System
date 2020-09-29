@@ -38,12 +38,10 @@ public class AddressBookMain
             contactList.add(contact1);
     }
 
-    public void displayContacts(String firstName)
+    public void displayContacts()
     {
         for(Contact lobj:contactList)
         {   
-            if(lobj.getFirstName().equals(firstName))
-            {
                 System.out.println("--------------------------------");
                 System.out.println("First Name: "+lobj.getFirstName());
                 System.out.println("Last Name: "+lobj.getLastName());
@@ -54,7 +52,6 @@ public class AddressBookMain
                 System.out.println("Phone Number: "+lobj.getPhoneNumber());
                 System.out.println("Email: "+lobj.getEmail());
                 System.out.println("--------------------------------");
-            }
         }
     }
 
@@ -69,6 +66,17 @@ public class AddressBookMain
         }
     }
 
+    public void deleteName(String deleteName)
+    {
+        for(Contact lobj:contactList)
+        {
+            if(lobj.getFirstName().equals(deleteName))
+            {
+                contactList.remove(lobj);
+            }
+        }
+    }
+
     public static void main(String[] args)
     {
         Scanner sc=new Scanner(System.in);
@@ -79,10 +87,12 @@ public class AddressBookMain
             addressBook.addContacts();
         }
 
-        addressBook.displayContacts("Omkeshwari");
-        addressBook.displayContacts("Madhuri");
+        //addressBook.displayContacts("Omkeshwari");
+        //addressBook.displayContacts("Madhuri");
 
-        System.out.println("Enter existing person name to edit:");
+        addressBook.displayContacts();
+
+       /* System.out.println("Enter existing person name to edit:");
         String existingName=sc.next();
 
         System.out.println("Enter new name:");
@@ -90,6 +100,13 @@ public class AddressBookMain
 
         addressBook.editName(existingName,newName);
 
-        addressBook.displayContacts(newName);
+        addressBook.displayContacts();
+        */
+        System.out.println("Enter existing name to be deleted:");
+        String deleteName=sc.next();
+
+        addressBook.deleteName(deleteName);
+
+        addressBook.displayContacts();
     }
 }
