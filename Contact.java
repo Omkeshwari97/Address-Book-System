@@ -1,3 +1,4 @@
+
 public class Contact
 {
     public String firstName;
@@ -19,6 +20,11 @@ public class Contact
         this.zip=zip;
         this.phoneNumber=phoneNumber;
         this.email=email;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName=firstName;
     }
 
     public String getFirstName()
