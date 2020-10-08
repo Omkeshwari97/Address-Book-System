@@ -22,6 +22,31 @@ public class Contact
         this.email = email;
     }
 
+    @Override
+    public boolean equals(Object other)
+    {
+        boolean result = false;
+
+        if(other == this)
+        {
+            return true;
+        }
+
+        if(other == null)
+        {
+            return false;
+        }
+
+        Contact contact = (Contact)other;
+
+        if(contact.firstName.equals(this.firstName))
+        {
+            result = true;
+        }
+
+        return result;
+    }
+
     public void setFirstName(String firstName)
     {
         this.firstName = firstName;

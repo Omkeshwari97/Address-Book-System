@@ -4,11 +4,11 @@ public class AddressBook
 {
     public String addressBookName;
 
-    ArrayList<Contact> contactList=new ArrayList<Contact>();
+    List<Contact> contactList = new ArrayList<Contact>();
     
     public AddressBook(String addressBookName)
     {
-        this.addressBookName=addressBookName;
+        this.addressBookName = addressBookName;
     }
 
     public String getAddressBookName()
@@ -47,6 +47,16 @@ public class AddressBook
             email = sc.next();
 
             Contact contact1 = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,email);
+
+            for(int i=0; i<contactList.size() ;i++)
+            {
+                if(contactList.get(i).equals(contact1))
+                {
+                    System.out.println("Duplicate Entry");
+                    return;
+                }
+            }
+            
             contactList.add(contact1);
     }
 
