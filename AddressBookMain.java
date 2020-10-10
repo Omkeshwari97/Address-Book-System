@@ -64,6 +64,7 @@ public class AddressBookMain
 	void viewPersonsByCity(String city)
 	{
 		System.out.println("City : " + city);
+		int count = 0;
 						
 		for(Map.Entry<String, AddressBook> entry : addressBookNameMap.entrySet())
 		{					
@@ -80,15 +81,19 @@ public class AddressBookMain
 	                System.out.println("Zip: "+listContact.getZip());
 	                System.out.println("Phone Number: "+listContact.getPhoneNumber());
 	                System.out.println("Email: "+listContact.getEmail());
-	                System.out.println("--------------------------------");			
+	                System.out.println("--------------------------------");		
+	                count++;
 				}
 			}
 		}	
+		
+		System.out.println("Count of persons in " + city + ": " + count);
 	}
 	
 	void viewPersonsByState(String state)
 	{
 		System.out.println("State : " + state);
+		int count = 0;
 						
 		for(Map.Entry<String, AddressBook> entry : addressBookNameMap.entrySet())
 		{					
@@ -106,9 +111,12 @@ public class AddressBookMain
 	                System.out.println("Phone Number: "+listContact.getPhoneNumber());
 	                System.out.println("Email: "+listContact.getEmail());
 	                System.out.println("--------------------------------");			
+	                count++;
 				}
 			}
-		}	
+		}
+		
+		System.out.println("Count of persons in " + state + ": " + count);
 	}
 	
 	
@@ -173,5 +181,6 @@ public class AddressBookMain
         System.out.println("Enter state to view persons:");
         String stateNameString = scanner.next();
         objAddressBookMain.viewPersonsByState(stateNameString);
+                
     }
 }
