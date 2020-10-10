@@ -1,10 +1,70 @@
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class AddressBookMain
-{
+{	
+	public static Map<String,AddressBook> addressBookNameMap;
+	
+	public AddressBookMain()
+	{
+		addressBookNameMap = new HashMap<String,AddressBook>();
+	}
+	
+	void searchPersonByCity(String city)
+	{
+		System.out.println("City : " + city);
+						
+		for(Map.Entry<String, AddressBook> entry : addressBookNameMap.entrySet())
+		{					
+			for(Contact listContact : entry.getValue().getContacts())
+			{
+				if(listContact.getCity().equals(city))
+				{
+					System.out.println("--------------------------------");
+	                System.out.println("First Name: "+listContact.getFirstName());
+	                System.out.println("Last Name: "+listContact.getLastName());
+	                System.out.println("Address: "+listContact.getAddress());
+	                System.out.println("City: "+listContact.getCity());
+	                System.out.println("State: "+listContact.getState());
+	                System.out.println("Zip: "+listContact.getZip());
+	                System.out.println("Phone Number: "+listContact.getPhoneNumber());
+	                System.out.println("Email: "+listContact.getEmail());
+	                System.out.println("--------------------------------");			
+				}
+			}
+		}	
+	}
+	
+	void searchPersonByState(String state)
+	{
+		System.out.println("State : " + state);
+						
+		for(Map.Entry<String, AddressBook> entry : addressBookNameMap.entrySet())
+		{					
+			for(Contact listContact : entry.getValue().getContacts())
+			{
+				if(listContact.getState().equals(state))
+				{
+					System.out.println("--------------------------------");
+	                System.out.println("First Name: "+listContact.getFirstName());
+	                System.out.println("Last Name: "+listContact.getLastName());
+	                System.out.println("Address: "+listContact.getAddress());
+	                System.out.println("City: "+listContact.getCity());
+	                System.out.println("State: "+listContact.getState());
+	                System.out.println("Zip: "+listContact.getZip());
+	                System.out.println("Phone Number: "+listContact.getPhoneNumber());
+	                System.out.println("Email: "+listContact.getEmail());
+	                System.out.println("--------------------------------");			
+				}
+			}
+		}	
+	}
+	
+	
     public static void main(String[] args) 
-    {
-        Map<String,AddressBook> addressBookNameMap=new HashMap<String,AddressBook>();
+    {    
+    	AddressBookMain objAddressBookMain = new AddressBookMain();
         Scanner scanner = new Scanner(System.in);
         int choice;
         AddressBook addressBook = null;
@@ -22,9 +82,9 @@ public class AddressBookMain
             switch (choice) 
             {
                 case 0: System.out.println("Enter Address Book Name:");
-                        String addressBookName = scanner.next();
-                        addressBook = new AddressBook(addressBookName);
-                        addressBookNameMap.put(addressBookName, addressBook);
+                        String bookName = scanner.next();
+                        addressBook = new AddressBook(bookName);
+                        addressBookNameMap.put(bookName, addressBook);
                         break;
                 case 1: addressBook.addContacts();
                         break;
@@ -39,10 +99,18 @@ public class AddressBookMain
                         String fnameDelete = scanner.next();
                         addressBook.deleteContact(fnameDelete);
                         break;
-                default:
-                    break;
+                default:break;
             }
         }while(choice>=0 && choice<=4);
     
+        //city
+        System.out.println("Enter city to search person:");
+        String cityString = scanner.next();
+        objAddressBookMain.searchPersonByCity(cityString);
+        
+        //state
+        System.out.println("Enter state to search person:");
+        String stateString = scanner.next();
+        objAddressBookMain.searchPersonByState(stateString);
     }
 }

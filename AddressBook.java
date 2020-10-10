@@ -2,18 +2,23 @@ import java.util.*;
 
 public class AddressBook
 {
-    public String addressBookName;
+    public String bookName;
 
     List<Contact> contactList = new ArrayList<Contact>();
     
-    public AddressBook(String addressBookName)
+    public AddressBook(String bookName)
     {
-        this.addressBookName = addressBookName;
+        this.bookName = bookName;
     }
 
     public String getAddressBookName()
     {
-        return addressBookName;
+        return bookName;
+    }
+    
+    public List<Contact> getContacts()
+    {
+    	return contactList;
     }
 
     public void addContacts()
@@ -88,7 +93,6 @@ public class AddressBook
         {
             if(lobj.getFirstName().equals(existingName))
             {
-                //lobj.setFirstName(newName);
 
                 switch(choice)
                 {
@@ -140,71 +144,4 @@ public class AddressBook
             }
         }
     }
-
-    /*public static void main(String[] args)
-    {
-        HashMap<String,AddressBook> addressBookNameMap=new HashMap<String,AddressBook>();
-        int n;
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter choice:");
-        int choice = scanner.nextInt();
-
-        /*switch (choice) 
-        {
-            case 1: addContacts();
-                    break;
-            
-            case 2: editContact();
-                    break;
-
-            default:
-                break;
-        }*/
-
-
-
-        /*Scanner sc=new Scanner(System.in);
-        AddressBook addressBook=new AddressBook("Book1");
-        addressBookNameMap.put("Book1",addressBook);
-
-        System.out.println("Enter number of contacts to be added to Book1:");
-        n=sc.nextInt();
-
-        for(int i=0;i<n;i++)
-        {
-            addressBook.addContacts();
-        }
-        addressBook.displayContacts(addressBook);
-
-        AddressBook addressBook2=new AddressBook("Book2");
-        addressBookNameMap.put("Book2",addressBook2);
-
-        System.out.println("Enter number of contacts to be added to Book2:");
-        n=sc.nextInt();
-
-        for(int i=0;i<n;i++)
-        {
-            addressBook2.addContacts();
-        }
-        addressBook2.displayContacts(addressBook2);
-
-       /* System.out.println("Enter existing person name to edit:");
-        String existingName=sc.next();
-
-        System.out.println("Enter new name:");
-        String newName=sc.next();
-
-        addressBook.editName(existingName,newName);
-
-        addressBook.displayContacts();
-        */
-        /*System.out.println("Enter existing name to be deleted:");
-        String deleteName=sc.next();
-
-        addressBook.deleteName(deleteName);
-
-        addressBook.displayContacts();*/
-
-    //}
 }
