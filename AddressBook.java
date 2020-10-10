@@ -93,7 +93,6 @@ public class AddressBook
         {
             if(lobj.getFirstName().equals(existingName))
             {
-
                 switch(choice)
                 {
                     case 1: System.out.println("Enter first name to be edited");
