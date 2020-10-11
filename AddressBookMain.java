@@ -65,29 +65,31 @@ public class AddressBookMain
 	{
 		System.out.println("City : " + city);
 		int count = 0;
-						
+		
+	
 		for(Map.Entry<String, AddressBook> entry : addressBookNameMap.entrySet())
-		{					
-			for(Contact listContact : entry.getValue().getContacts())
-			{
-				if(listContact.getCity().equals(city))
-				{
-					System.out.println("--------------------------------");
-	                System.out.println("First Name: "+listContact.getFirstName());
-	                System.out.println("Last Name: "+listContact.getLastName());
-	                System.out.println("Address: "+listContact.getAddress());
-	                System.out.println("City: "+listContact.getCity());
-	                System.out.println("State: "+listContact.getState());
-	                System.out.println("Zip: "+listContact.getZip());
-	                System.out.println("Phone Number: "+listContact.getPhoneNumber());
-	                System.out.println("Email: "+listContact.getEmail());
-	                System.out.println("--------------------------------");		
-	                count++;
-				}
-			}
+		{		
+			List<Contact> contactListByCity = entry.getValue().getContacts()
+												.stream()
+												.filter(c -> c.getCity().equals(city))
+												.collect(Collectors.toList());
+						
+			contactListByCity.stream().forEach(lobj ->
+					System.out.println("--------------------------------"+
+										"\nFirst Name: "+lobj.getFirstName()+
+										"\nLast Name: "+lobj.getLastName()+
+										"\nAddress: "+lobj.getAddress()+
+										"\nCity: "+lobj.getCity()+
+										"\nState: "+lobj.getState()+
+										"\nZip: "+lobj.getZip()+
+										"\nPhone Number: "+lobj.getPhoneNumber()+
+										"\nEmail: "+lobj.getEmail()+
+										"\n--------------------------------")
+					);
 		}	
 		
-		System.out.println("Count of persons in " + city + ": " + count);
+		//System.out.println("Count of persons in " + city + ": " + count);
+		
 	}
 	
 	void viewPersonsByState(String state)
@@ -97,26 +99,26 @@ public class AddressBookMain
 						
 		for(Map.Entry<String, AddressBook> entry : addressBookNameMap.entrySet())
 		{					
-			for(Contact listContact : entry.getValue().getContacts())
-			{
-				if(listContact.getState().equals(state))
-				{
-					System.out.println("--------------------------------");
-	                System.out.println("First Name: "+listContact.getFirstName());
-	                System.out.println("Last Name: "+listContact.getLastName());
-	                System.out.println("Address: "+listContact.getAddress());
-	                System.out.println("City: "+listContact.getCity());
-	                System.out.println("State: "+listContact.getState());
-	                System.out.println("Zip: "+listContact.getZip());
-	                System.out.println("Phone Number: "+listContact.getPhoneNumber());
-	                System.out.println("Email: "+listContact.getEmail());
-	                System.out.println("--------------------------------");			
-	                count++;
-				}
-			}
+			List<Contact> contactListByState = entry.getValue().getContacts()
+												.stream()
+												.filter(s -> s.getState().equals(state))
+												.collect(Collectors.toList());
+			
+			contactListByState.stream().forEach(lobj ->
+					System.out.println("--------------------------------"+
+							"\nFirst Name: "+lobj.getFirstName()+
+							"\nLast Name: "+lobj.getLastName()+
+							"\nAddress: "+lobj.getAddress()+
+							"\nCity: "+lobj.getCity()+
+							"\nState: "+lobj.getState()+
+							"\nZip: "+lobj.getZip()+
+							"\nPhone Number: "+lobj.getPhoneNumber()+
+							"\nEmail: "+lobj.getEmail()+
+							"\n--------------------------------")
+					);
 		}
 		
-		System.out.println("Count of persons in " + state + ": " + count);
+		//System.out.println("Count of persons in " + state + ": " + count);
 	}
 	
 	
@@ -174,13 +176,13 @@ public class AddressBookMain
         String nameString = scanner.next();
         objAddressBookMain.searchPersonByState(stateString,nameString);
         
-        System.out.println("Enter city to view persons:");
+        /*System.out.println("Enter city to view persons:");
         String cityNameString = scanner.next();
         objAddressBookMain.viewPersonsByCity(cityNameString);
         
         System.out.println("Enter state to view persons:");
         String stateNameString = scanner.next();
-        objAddressBookMain.viewPersonsByState(stateNameString);
+        objAddressBookMain.viewPersonsByState(stateNameString);*/
                 
     }
 }
