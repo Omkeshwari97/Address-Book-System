@@ -68,19 +68,22 @@ public class AddressBook
     public void displayContacts(AddressBook addressBook)
     {
         System.out.println("Details of "+addressBook.getAddressBookName());
-        for(Contact lobj:contactList)
-        {   
-                System.out.println("--------------------------------");
-                System.out.println("First Name: "+lobj.getFirstName());
-                System.out.println("Last Name: "+lobj.getLastName());
-                System.out.println("Address: "+lobj.getAddress());
-                System.out.println("City: "+lobj.getCity());
-                System.out.println("State: "+lobj.getState());
-                System.out.println("Zip: "+lobj.getZip());
-                System.out.println("Phone Number: "+lobj.getPhoneNumber());
-                System.out.println("Email: "+lobj.getEmail());
-                System.out.println("--------------------------------");
-        }
+        //for(Contact lobj:contactList)
+        
+        contactList.stream()
+        	.sorted((p1, p2)->p1.getFirstName().compareTo(p2.getFirstName()))
+        	.forEach(lobj ->  
+        		System.out.println("--------------------------------"+
+				"\nFirst Name: "+lobj.getFirstName()+
+				"\nLast Name: "+lobj.getLastName()+
+				"\nAddress: "+lobj.getAddress()+
+				"\nCity: "+lobj.getCity()+
+				"\nState: "+lobj.getState()+
+				"\nZip: "+lobj.getZip()+
+				"\nPhone Number: "+lobj.getPhoneNumber()+
+				"\nEmail: "+lobj.getEmail()+
+				"\n--------------------------------")
+        );
     }
 
     public void editContacts(String existingName)
@@ -93,6 +96,8 @@ public class AddressBook
         {
             if(lobj.getFirstName().equals(existingName))
             {
+                //lobj.setFirstName(newName);
+
                 switch(choice)
                 {
                     case 1: System.out.println("Enter first name to be edited");
