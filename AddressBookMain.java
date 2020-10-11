@@ -155,12 +155,29 @@ public class AddressBookMain
                         break;
                 case 1: addressBook.addContacts();
                         break;
-                case 2: addressBook.displayContacts(addressBook);
+                case 2: System.out.println("Enter choice for displaying details");
+                		System.out.println("1. Sort By Name");
+                		System.out.println("2. Sort By City");
+                		System.out.println("3. Sort By State");
+                		System.out.println("4. Sort By Zip");
+                		int key = scanner.nextInt();
+                		switch(key) 
+                		{
+							case 1:	addressBook.sortContactsbyName(addressBook);						
+									break;
+							case 2:	addressBook.sortContactsbyCity(addressBook);						
+									break;								
+							case 3:	addressBook.sortContactsbyState(addressBook);						
+									break;								
+							case 4:	addressBook.sortContactsbyZip(addressBook);						
+									break;			
+							default:
+									break;
+						}
                         break;
                 case 3: System.out.println("Enter first name to edit:");
                         String fnameEdit = scanner.next();
                         addressBook.editContacts(fnameEdit);
-                        addressBook.displayContacts(addressBook);
                         break;
                 case 4: System.out.println("Enter first name to be deleted");
                         String fnameDelete = scanner.next();

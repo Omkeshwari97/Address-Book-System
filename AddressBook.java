@@ -65,13 +65,76 @@ public class AddressBook
             contactList.add(contact1);
     }
 
-    public void displayContacts(AddressBook addressBook)
+    public void sortContactsbyName(AddressBook addressBook)
     {
-        System.out.println("Details of "+addressBook.getAddressBookName());
+        System.out.println("Details of " +addressBook.getAddressBookName() + "sorted by name");
         //for(Contact lobj:contactList)
         
         contactList.stream()
         	.sorted((p1, p2)->p1.getFirstName().compareTo(p2.getFirstName()))
+        	.forEach(lobj ->  
+        		System.out.println("--------------------------------"+
+				"\nFirst Name: "+lobj.getFirstName()+
+				"\nLast Name: "+lobj.getLastName()+
+				"\nAddress: "+lobj.getAddress()+
+				"\nCity: "+lobj.getCity()+
+				"\nState: "+lobj.getState()+
+				"\nZip: "+lobj.getZip()+
+				"\nPhone Number: "+lobj.getPhoneNumber()+
+				"\nEmail: "+lobj.getEmail()+
+				"\n--------------------------------")
+        );
+    }
+    
+    public void sortContactsbyCity(AddressBook addressBook)
+    {
+        System.out.println("Details of "+addressBook.getAddressBookName() + "sorted by city");
+        //for(Contact lobj:contactList)
+        
+        contactList.stream()
+        	.sorted((p1, p2)->p1.getCity().compareTo(p2.getCity()))
+        	.forEach(lobj ->  
+        		System.out.println("--------------------------------"+
+				"\nFirst Name: "+lobj.getFirstName()+
+				"\nLast Name: "+lobj.getLastName()+
+				"\nAddress: "+lobj.getAddress()+
+				"\nCity: "+lobj.getCity()+
+				"\nState: "+lobj.getState()+
+				"\nZip: "+lobj.getZip()+
+				"\nPhone Number: "+lobj.getPhoneNumber()+
+				"\nEmail: "+lobj.getEmail()+
+				"\n--------------------------------")
+        );
+    }
+    
+    public void sortContactsbyState(AddressBook addressBook)
+    {
+        System.out.println("Details of "+addressBook.getAddressBookName() + "sorted by state");
+        //for(Contact lobj:contactList)
+        
+        contactList.stream()
+        	.sorted((p1, p2)->p1.getState().compareTo(p2.getState()))
+        	.forEach(lobj ->  
+        		System.out.println("--------------------------------"+
+				"\nFirst Name: "+lobj.getFirstName()+
+				"\nLast Name: "+lobj.getLastName()+
+				"\nAddress: "+lobj.getAddress()+
+				"\nCity: "+lobj.getCity()+
+				"\nState: "+lobj.getState()+
+				"\nZip: "+lobj.getZip()+
+				"\nPhone Number: "+lobj.getPhoneNumber()+
+				"\nEmail: "+lobj.getEmail()+
+				"\n--------------------------------")
+        );
+    }
+    
+    public void sortContactsbyZip(AddressBook addressBook)
+    {
+        System.out.println("Details of "+addressBook.getAddressBookName() + "sorted by zip");
+        //for(Contact lobj:contactList)
+        
+        contactList.stream()
+        	.sorted((p1, p2)->p1.getZip().compareTo(p2.getZip()))
         	.forEach(lobj ->  
         		System.out.println("--------------------------------"+
 				"\nFirst Name: "+lobj.getFirstName()+
