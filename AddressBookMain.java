@@ -179,13 +179,13 @@ public class AddressBookMain
         String nameString = scanner.next();
         objAddressBookMain.searchPersonByState(stateString,nameString);
         
-       /* System.out.println("Enter city to view persons:");
+        System.out.println("Enter city to view persons:");
         String cityNameString = scanner.next();
         objAddressBookMain.viewPersonsByCity(cityNameString);
         
         System.out.println("Enter state to view persons:");
         String stateNameString = scanner.next();
-        objAddressBookMain.viewPersonsByState(stateNameString);*/
+        objAddressBookMain.viewPersonsByState(stateNameString);
                 
     }
 }
