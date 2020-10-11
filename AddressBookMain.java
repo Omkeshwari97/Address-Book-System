@@ -175,7 +175,8 @@ public class AddressBookMain
         System.out.println("Enter first name:");
         String nameString = scanner.next();
         objAddressBookMain.searchPersonByState(stateString,nameString);
-        
+		
+		
         /*System.out.println("Enter city to view persons:");
         String cityNameString = scanner.next();
         objAddressBookMain.viewPersonsByCity(cityNameString);
