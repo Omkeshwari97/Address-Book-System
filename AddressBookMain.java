@@ -168,7 +168,6 @@ public class AddressBookMain
         System.out.println("Enter first name:");
         String personNameString = scanner.next();
         objAddressBookMain.searchPersonByCity(cityString, personNameString);
-        
 
         System.out.println("Enter state to search person:");
         String stateString = scanner.next();
