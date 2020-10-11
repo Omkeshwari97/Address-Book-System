@@ -89,9 +89,11 @@ public class AddressBookMain
 										"\nEmail: "+lobj.getEmail()+
 										"\n--------------------------------")
 					);
+			
+			count = count + contactListByCity.size();
 		}	
 		
-		//System.out.println("Count of persons in " + city + ": " + count);
+		System.out.println("Count of persons in " + city + ": " + count);
 		
 	}
 	
@@ -119,9 +121,11 @@ public class AddressBookMain
 							"\nEmail: "+lobj.getEmail()+
 							"\n--------------------------------")
 					);
+			
+			count = count + contactListByState.size();
 		}
 		
-		//System.out.println("Count of persons in " + state + ": " + count);
+		System.out.println("Count of persons in " + state + ": " + count);
 	}
 	
 	
