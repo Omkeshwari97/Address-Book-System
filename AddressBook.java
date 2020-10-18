@@ -1,3 +1,7 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class AddressBook
@@ -210,5 +214,41 @@ public class AddressBook
                 contactList.remove(lobj);
             }
         }
+    }
+    
+    public void writeToFile() throws IOException
+    {
+    	FileWriter fileWriter = new FileWriter("AddressBookOutput.txt");
+    	
+    	for(Contact cobj : contactList)
+    	{
+    		fileWriter.write(cobj.getFirstName() + " " + cobj.getLastName()
+    		 + " " + cobj.getAddress() + " " + cobj.getCity() + " " + 
+    				cobj.getState() + " " + cobj.getZip() + " " + 
+    		 cobj.getEmail() + " " + cobj.getPhoneNumber() + "\n");
+    	}
+    	
+    	fileWriter.close();
+    }
+    
+    public void readFromFile() throws IOException 
+    {
+    	FileReader fileReader = null;
+    	int ch;
+    	
+    	try 
+    	{
+    		fileReader = new FileReader("AddressBookOutput.txt");
+		} 
+    	catch (FileNotFoundException e) 
+    	{
+    		System.out.println("File not found");
+		}
+    	
+    	while((ch = fileReader.read()) != -1)
+    	{
+    		System.out.println((char)ch);
+    	}
+    	fileReader.close();
     }
 }

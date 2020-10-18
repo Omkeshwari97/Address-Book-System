@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -129,7 +130,7 @@ public class AddressBookMain
 	}
 	
 	
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {    
     	AddressBookMain objAddressBookMain = new AddressBookMain();
         Scanner scanner = new Scanner(System.in);
@@ -143,6 +144,7 @@ public class AddressBookMain
             System.out.println("2.Display Contact");
             System.out.println("3.Edit Contact");
             System.out.println("4.Delete Contact");
+            System.out.println("5.Write details to file and read it");
             System.out.println("Enter choice:");
             choice = scanner.nextInt();
             
@@ -183,6 +185,9 @@ public class AddressBookMain
                         String fnameDelete = scanner.next();
                         addressBook.deleteContact(fnameDelete);
                         break;
+                case 5: addressBook.writeToFile();
+                		addressBook.readFromFile();
+                		break;
                 default:break;
             }
         }while(choice>=0 && choice<=4);
