@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.*;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class AddressBookMain
@@ -145,6 +144,7 @@ public class AddressBookMain
             System.out.println("3.Edit Contact");
             System.out.println("4.Delete Contact");
             System.out.println("5.Write details to file and read it");
+            System.out.println("6.Save details using csv");
             System.out.println("Enter choice:");
             choice = scanner.nextInt();
             
@@ -187,6 +187,9 @@ public class AddressBookMain
                         break;
                 case 5: addressBook.writeToFile();
                 		addressBook.readFromFile();
+                		break;
+                case 6: addressBook.writeToCSV();
+                		addressBook.readFromCSV();
                 		break;
                 default:break;
             }

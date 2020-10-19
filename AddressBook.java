@@ -1,7 +1,12 @@
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class AddressBook
@@ -242,13 +247,82 @@ public class AddressBook
 		} 
     	catch (FileNotFoundException e) 
     	{
-    		System.out.println("File not found");
+    		System.out.println("File not fouund");
 		}
     	
     	while((ch = fileReader.read()) != -1)
     	{
-    		System.out.println((char)ch);
+    		System.out.print((char)ch);
     	}
     	fileReader.close();
     }
+
+	public void writeToCSV() throws IOException 
+	{
+		FileWriter csvWriter = new FileWriter("csvoutput.csv");
+		csvWriter.append("First Name");
+		csvWriter.append(",");
+		csvWriter.append("Last Name");
+		csvWriter.append(",");
+		csvWriter.append("Address");
+		csvWriter.append(",");
+		csvWriter.append("City");
+		csvWriter.append(",");
+		csvWriter.append("State");
+		csvWriter.append(",");
+		csvWriter.append("Zip");
+		csvWriter.append(",");
+		csvWriter.append("Phone Number");
+		csvWriter.append(",");
+		csvWriter.append("Email");
+		csvWriter.append("\n");
+		
+		for(Contact cobj : contactList)
+		{
+			csvWriter.append(cobj.getFirstName());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getLastName());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getAddress());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getCity());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getState());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getZip());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getPhoneNumber());
+			csvWriter.append(",");
+			csvWriter.append(cobj.getEmail());
+			csvWriter.append("\n");
+		}
+		
+		csvWriter.close();
+	}
+
+	public void readFromCSV() throws IOException 
+	{
+		String pathToCsv = "C:/Users/omkes/eclipse-workspace/AddressBookSystem/csvoutput.csv";
+		
+		BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
+		String row;
+			
+		while ((row = csvReader.readLine()) != null) 
+		{
+		    String data[] = row.split(",");
+			
+		    System.out.println("--------------------------------" +
+					"\nFirst Name: "+ data[0] +
+					"\nLast Name: "+ data[1] +
+					"\nAddress: "+ data[2] +
+					"\nCity: "+ data[3] +
+					"\nState: "+ data[4] +
+					"\nZip: "+ data[5] +
+					"\nPhone Number: "+ data[6] +
+					"\nEmail: "+ data[7] +
+					"\n--------------------------------");
+		}
+			
+		csvReader.close();
+	}
 }
