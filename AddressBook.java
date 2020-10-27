@@ -4,10 +4,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonStreamParser;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 public class AddressBook
 {
@@ -324,5 +332,56 @@ public class AddressBook
 		}
 			
 		csvReader.close();
+	}
+
+	public void writeDataToJSON() throws IOException
+	{
+		Gson gson = new Gson();
+		Path path = Paths.get("jsonOutput.json");
+		FileWriter writer = new FileWriter(path.toFile());
+		
+		for(Contact obj : contactList)
+		{
+			String json = gson.toJson(obj);
+			
+			try
+			{
+				writer.write(json);
+			}
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		writer.close();
+	}
+	
+	public void readDataFromJSON()
+	{
+		Gson gson = new Gson();
+		
+		try 
+		{
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(Paths.get("jsonOutput.json").toFile()));
+			JsonStreamParser parser = new JsonStreamParser(bufferedReader);
+			
+			while(parser.hasNext())
+			{
+				JsonElement jsonElement = parser.next();
+				
+				if(jsonElement.isJsonObject())
+				{
+					Contact cobj = gson.fromJson(jsonElement, Contact.class);
+					System.out.println(cobj.getFirstName() + " " + cobj.getLastName()
+    		 + " " + cobj.getAddress() + " " + cobj.getCity() + " " + 
+    				cobj.getState() + " " + cobj.getZip() + " " + 
+    		 cobj.getEmail() + " " + cobj.getPhoneNumber() + "\n");
+				}
+			}
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }
